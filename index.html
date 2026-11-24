@@ -1,37 +1,244 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#0D1120" />
-    <meta name="twitter:title" content="词光 · 一词一画，点亮雅思" />
-    <meta name="twitter:image" content="https://0xlei.tech/words/brand/og-card.jpg" />
-    <title>词光 Word Atlas · 一词一画，点亮雅思</title>
-    <meta name="description" content="7,298 个雅思核心词，每个词一幅原创插画、两句原创例句和英美发音。学会一个，就点亮一颗星。免费、开源、无需注册。" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="词光 · 一词一画，点亮雅思" />
-    <meta property="og:description" content="7,298 个雅思词，每个都有一幅画。学会一个，就点亮一颗星。免费、开源、无需注册。" />
-    <meta property="og:image" content="https://0xlei.tech/words/brand/og-card.jpg" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/icon-512.png" />
-    <link rel="manifest" href="/manifest.webmanifest" />
-    <link rel="preload" href="/atlas/index.json" as="fetch" crossorigin="anonymous" />
-    <script>
-      // Apply the saved theme (dark by default) before first paint.
-      (function () {
-        var t = "dark";
-        try {
-          var s = JSON.parse(localStorage.getItem("word-atlas:settings") || "{}");
-          if (s.theme) t = s.theme;
-        } catch (e) {}
-        if (t !== "system") document.documentElement.setAttribute("data-theme", t);
-      })();
-    </script>
-    <script type="module" crossorigin src="/assets/index-Dnyq5nlU.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-BDZ0W126.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>保哥 · 质量管理 × AI 内容实践</title>
+  <meta name="description" content="保哥：15 年质量管理从业者，六西格玛绿带，从零学习 AI 与编程；日更「WorkBuddy 使用技巧与热点」，探索易经 64 卦内容系列。" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230f1117'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-size='36' font-family='sans-serif' fill='%236c8cff'%3E%E4%BF%9D%3C/text%3E%3C/svg%3E" />
+  <style>
+    :root {
+      --bg: #0d0f16;
+      --bg-2: #12151f;
+      --card: #171b27;
+      --text: #eef0f6;
+      --muted: #9ba2b8;
+      --accent: #7c9cff;
+      --accent2: #c08cff;
+      --border: #292e3e;
+      --shadow: 0 18px 50px -30px rgba(0,0,0,.8);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+      background:
+        radial-gradient(760px 420px at 12% -8%, rgba(124,156,255,.16), transparent 70%),
+        radial-gradient(680px 400px at 92% 4%, rgba(192,140,255,.12), transparent 72%),
+        linear-gradient(180deg, var(--bg-2), var(--bg) 55%);
+    }
+    a { color: inherit; }
+    .wrap { width: min(940px, calc(100% - 40px)); margin: 0 auto; }
+
+    /* 导航 */
+    header {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(13,15,22,.72);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav { display: flex; justify-content: space-between; align-items: center; height: 66px; }
+    .logo { font-weight: 800; font-size: 18px; letter-spacing: .5px; text-decoration: none; }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 26px; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; transition: color .2s; }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--text); }
+
+    /* 首屏 */
+    .hero { text-align: center; padding: 96px 0 76px; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px; margin-bottom: 26px;
+      padding: 6px 14px; border: 1px solid var(--border); border-radius: 999px;
+      font-size: 12px; color: var(--muted); background: rgba(255,255,255,.02);
+    }
+    .badge::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #5fd39a; box-shadow: 0 0 0 4px rgba(95,211,154,.12); }
+    .avatar {
+      width: 116px; height: 116px; border-radius: 30px; margin: 0 auto 26px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 48px; font-weight: 800; color: #fff;
+      box-shadow: 0 16px 44px -16px rgba(124,156,255,.65);
+      transform: rotate(-4deg); transition: transform .3s ease;
+    }
+    .avatar:hover { transform: rotate(0) scale(1.03); }
+    .hero h1 { font-size: clamp(32px, 6vw, 46px); line-height: 1.25; letter-spacing: -.5px; }
+    .hero h1 span { background: linear-gradient(120deg, var(--accent), var(--accent2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .subtitle { font-size: 16px; color: var(--muted); max-width: 620px; margin: 18px auto 30px; }
+    .stats { display: flex; justify-content: center; gap: 34px; flex-wrap: wrap; margin: 30px 0 34px; }
+    .stat b { display: block; font-size: 24px; color: var(--text); }
+    .stat small { font-size: 12px; color: var(--muted); }
+    .btn-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px; padding: 11px 24px;
+      border-radius: 10px; text-decoration: none; font-size: 14px; font-weight: 600;
+      transition: transform .18s, box-shadow .18s, border-color .18s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: linear-gradient(120deg, var(--accent), #8f7cff); color: #fff; box-shadow: 0 10px 26px -12px rgba(124,156,255,.8); }
+    .btn-ghost { border: 1px solid var(--border); color: var(--text); background: rgba(255,255,255,.02); }
+    .btn-ghost:hover { border-color: var(--accent); }
+
+    /* 区块 */
+    section { padding: 56px 0; }
+    .section-title { font-size: 24px; margin-bottom: 26px; display: flex; align-items: center; gap: 12px; letter-spacing: .3px; }
+    .section-title::before { content: ""; width: 4px; height: 22px; border-radius: 2px; background: linear-gradient(var(--accent), var(--accent2)); }
+
+    .about p { color: var(--muted); max-width: 780px; }
+    .skills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    .skill {
+      padding: 6px 14px; border: 1px solid var(--border); border-radius: 999px;
+      font-size: 13px; color: var(--muted); background: var(--card); transition: border-color .2s, color .2s;
+    }
+    .skill:hover { border-color: var(--accent); color: var(--text); }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+    .card {
+      position: relative; background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 26px; box-shadow: var(--shadow);
+      transition: transform .2s, border-color .2s, box-shadow .2s;
+    }
+    .card:hover { transform: translateY(-5px); border-color: rgba(124,156,255,.6); box-shadow: 0 24px 60px -32px rgba(124,156,255,.55); }
+    .card .tag { display: inline-block; font-size: 11px; letter-spacing: .6px; color: var(--accent); text-transform: uppercase; margin-bottom: 10px; }
+    .card h3 { font-size: 17px; margin-bottom: 10px; line-height: 1.45; }
+    .card p { font-size: 14px; color: var(--muted); }
+    .card .foot { display: flex; align-items: center; justify-content: space-between; margin-top: 18px; font-size: 12px; }
+    .status { color: #7fd8af; }
+    .status::before { content: "●"; font-size: 9px; margin-right: 6px; }
+    .card a.go { color: var(--accent); text-decoration: none; font-weight: 600; }
+    .card a.go:hover { text-decoration: underline; }
+
+    .contact { text-align: center; }
+    .contact p { color: var(--muted); margin-bottom: 22px; }
+    .contact-links { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .contact-links a {
+      padding: 10px 20px; border: 1px solid var(--border); border-radius: 10px;
+      color: var(--muted); text-decoration: none; font-size: 14px; background: var(--card);
+      transition: border-color .2s, color .2s, transform .2s;
+    }
+    .contact-links a:hover { border-color: var(--accent); color: var(--text); transform: translateY(-2px); }
+
+    footer { text-align: center; padding: 30px 0 42px; border-top: 1px solid var(--border); color: var(--muted); font-size: 13px; }
+    @media (max-width: 600px) {
+      .hero { padding: 72px 0 56px; }
+      .nav-links { gap: 16px; }
+      .nav-links a { font-size: 13px; }
+      .stats { gap: 24px; }
+      section { padding: 44px 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { scroll-behavior: auto !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <nav>
+        <a class="logo" href="#top">保<span>哥</span></a>
+        <div class="nav-links">
+          <a href="#about">关于</a>
+          <a href="#projects">在做</a>
+          <a href="#sites">站点</a>
+          <a href="#contact">联系</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap" id="top">
+    <div class="hero">
+      <div class="badge">质量 × AI × 内容实践</div>
+      <div class="avatar">保</div>
+      <h1>你好，我是 <span>保哥</span></h1>
+      <p class="subtitle">15 年质量管理老兵，六西格玛绿带。在越南做来料检验，也在从零学 AI 与编程；写点质量、AI 与成长的内容。</p>
+      <div class="stats">
+        <div class="stat"><b>15 年</b><small>质量管理经验</small></div>
+        <div class="stat"><b>绿带</b><small>六西格玛</small></div>
+        <div class="stat"><b>4 个</b><small>公众号摘要自动化</small></div>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="#sites">看看我的站点 →</a>
+        <a class="btn btn-ghost" href="https://github.com/kingpine1988-coder" target="_blank" rel="noopener">GitHub 主页</a>
+      </div>
+    </div>
+
+    <section id="about" class="about">
+      <h2 class="section-title">关于我</h2>
+      <p>15 年品质管理经验，六西格玛绿带，英语四级；德州学院毕业，后专升本至电子科技大学。目前在越南负责来料检验部工作。技术上是零基础学习者，正在补 AI 与编程的课；日常重度使用华为鸿蒙生态与 Windows。以「保哥」署名运营 AI 内容创作专家团，保持「WorkBuddy 使用技巧与热点」日更。</p>
+      <div class="skills">
+        <span class="skill">质量管理 / 来料检验 IQC</span>
+        <span class="skill">六西格玛绿带</span>
+        <span class="skill">AI 应用</span>
+        <span class="skill">提示词工程</span>
+        <span class="skill">内容自动化</span>
+        <span class="skill">鸿蒙生态</span>
+        <span class="skill">越南语（学习中）</span>
+        <span class="skill">英语 CET-4</span>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2 class="section-title">正在做</h2>
+      <div class="grid">
+        <div class="card">
+          <span class="tag">Column</span>
+          <h3>「WorkBuddy 使用技巧与热点」日更专栏</h3>
+          <p>标题以「WorkBuddy 之」开头，按基础 → 熟练 → 精深三级递进；配套爆款提示词 playbook，每日更新并原文摘录进内容 brief。</p>
+          <div class="foot"><span class="status">持续更新中</span></div>
+        </div>
+        <div class="card">
+          <span class="tag">Automation</span>
+          <h3>公众号摘要自动化</h3>
+          <p>覆盖 SixSigmaHome、桃子讲质量、SHMQRC、zgzljlb 四个质量领域账号；配合 IMA 知识库，粘贴文章链接即可一步导入并生成摘要。</p>
+          <div class="foot"><span class="status">自动化运行中</span></div>
+        </div>
+        <div class="card">
+          <span class="tag">Content Series</span>
+          <h3>易经解读 · 64 卦系列</h3>
+          <p>已建立 3 套标题公式 + 7 模块结构 + 调性/配图/节奏规范 + 避坑清单，定位「人生成长与认知觉醒」。先出 2 篇样稿小批量验证，再推进其余 62 卦。</p>
+          <div class="foot"><span class="status">样稿验证中</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sites">
+      <h2 class="section-title">我的站点</h2>
+      <div class="grid">
+        <div class="card">
+          <span class="tag">Words</span>
+          <h3>词光 · Word Atlas</h3>
+          <p>一词一画，点亮雅思。7298 个核心词，每个词一幅原创插画、两句原创例句和英美发音。免费、开源、无需注册。</p>
+          <div class="foot"><span class="status">在线可用</span><a class="go" href="/words/">进入站点 →</a></div>
+        </div>
+        <div class="card">
+          <span class="tag">Typing</span>
+          <h3>打字词库 · TypeWords</h3>
+          <p>英语打字练习工具：按教材与词书分册练习，支持听写、词典查询、学习统计与自定义导入。</p>
+          <div class="foot"><span class="status">在线可用</span><a class="go" href="/typewords/">进入站点 →</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2 class="section-title" style="justify-content:center">联系我</h2>
+      <p>想聊质量管理、AI 内容自动化，或者只是打个招呼，欢迎邮件或 GitHub 找我。</p>
+      <div class="contact-links">
+        <a href="mailto:kingPine1988@gmail.com">✉ kingPine1988@gmail.com</a>
+        <a href="https://github.com/kingpine1988-coder" target="_blank" rel="noopener">GitHub · kingpine1988-coder</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© 2026 保哥 · 用 GitHub Pages 搭建</div>
+  </footer>
+</body>
 </html>
