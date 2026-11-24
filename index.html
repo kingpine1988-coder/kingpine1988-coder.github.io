@@ -1,168 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>保哥 | 质量管理 × AI 内容实践</title>
-  <meta name="description" content="15 年质量管理从业者，六西格玛绿带，正在从零学习 AI 与编程；日更「WorkBuddy 使用技巧与热点」，探索易经 64 卦内容系列。" />
-  <style>
-    :root {
-      --bg: #0f1117;
-      --card: #1a1d28;
-      --text: #e8eaf0;
-      --muted: #9aa0b4;
-      --accent: #6c8cff;
-      --accent2: #b06cff;
-      --border: #2a2e3d;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
-    .wrap { max-width: 900px; margin: 0 auto; padding: 0 24px; }
-
-    /* 顶部导航 */
-    header {
-      position: sticky; top: 0; z-index: 10;
-      background: rgba(15, 17, 23, .8);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-    }
-    nav { display: flex; justify-content: space-between; align-items: center; height: 64px; }
-    .logo { font-weight: 700; font-size: 18px; color: var(--accent); text-decoration: none; }
-    .nav-links a { color: var(--muted); text-decoration: none; margin-left: 24px; font-size: 14px; }
-    .nav-links a:hover { color: var(--text); }
-
-    /* 首屏 */
-    .hero { text-align: center; padding: 100px 0 80px; }
-    .avatar {
-      width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 24px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      display: flex; align-items: center; justify-content: center;
-      font-size: 44px; font-weight: 700; color: #fff;
-      box-shadow: 0 8px 30px rgba(108, 140, 255, .3);
-    }
-    .hero h1 { font-size: 40px; margin-bottom: 12px; }
-    .hero h1 span { background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .hero .subtitle { font-size: 18px; color: var(--muted); max-width: 640px; margin: 0 auto 28px; }
-    .btn-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-    .btn {
-      display: inline-block; padding: 11px 24px; border-radius: 8px; text-decoration: none;
-      font-size: 14px; font-weight: 600; transition: transform .15s, opacity .15s;
-    }
-    .btn:hover { transform: translateY(-2px); opacity: .9; }
-    .btn-primary { background: var(--accent); color: #fff; }
-    .btn-ghost { border: 1px solid var(--border); color: var(--text); }
-
-    /* 通用区块 */
-    section { padding: 60px 0; }
-    .section-title { font-size: 26px; margin-bottom: 28px; display: flex; align-items: center; gap: 12px; }
-    .section-title::before { content: ""; width: 4px; height: 24px; border-radius: 2px; background: linear-gradient(var(--accent), var(--accent2)); }
-
-    /* 关于我 */
-    .about p { color: var(--muted); max-width: 760px; }
-    .skills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
-    .skill { padding: 6px 14px; border: 1px solid var(--border); border-radius: 999px; font-size: 13px; color: var(--muted); }
-
-    /* 项目卡片 */
-    .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
-    .card {
-      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
-      padding: 24px; transition: transform .15s, border-color .15s;
-    }
-    .card:hover { transform: translateY(-4px); border-color: var(--accent); }
-    .card h3 { font-size: 18px; margin-bottom: 10px; }
-    .card p { font-size: 14px; color: var(--muted); margin-bottom: 16px; }
-    .card .status { color: var(--accent); font-size: 13px; }
-
-    /* 联系方式 */
-    .contact { text-align: center; }
-    .contact p { color: var(--muted); margin-bottom: 20px; }
-    .contact-links { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
-    .contact-links a { color: var(--muted); text-decoration: none; font-size: 14px; }
-    .contact-links a:hover { color: var(--accent); }
-
-    footer { text-align: center; padding: 32px 0; border-top: 1px solid var(--border); color: var(--muted); font-size: 13px; }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="wrap">
-      <nav>
-        <a class="logo" href="#">保哥</a>
-        <div class="nav-links">
-          <a href="#about">关于</a>
-          <a href="#projects">在做</a>
-          <a href="#contact">联系</a>
-        </div>
-      </nav>
-    </div>
-  </header>
-
-  <main class="wrap">
-    <div class="hero">
-      <div class="avatar">保</div>
-      <h1>你好，我是 <span>保哥</span></h1>
-      <p class="subtitle">15 年质量管理老兵，六西格玛绿带。在越南做来料检验，也在从零学 AI 与编程；写点质量、AI 与成长的内容。</p>
-      <div class="btn-row">
-        <a class="btn btn-primary" href="#projects">看看我在做什么</a>
-        <a class="btn btn-ghost" href="https://github.com/kingpine1988-coder" target="_blank" rel="noopener">GitHub 主页</a>
-      </div>
-    </div>
-
-    <section id="about" class="about">
-      <h2 class="section-title">关于我</h2>
-      <p>15 年品质管理经验，六西格玛绿带，英语四级；德州学院毕业，后专升本至电子科技大学。目前在越南负责来料检验部工作。技术上是零基础学习者，正在补 AI 与编程的课；日常重度使用华为鸿蒙生态与 Windows。以「保哥」署名运营 AI 内容创作专家团，保持「WorkBuddy 使用技巧与热点」日更。</p>
-      <div class="skills">
-        <span class="skill">质量管理 / 来料检验 IQC</span>
-        <span class="skill">六西格玛绿带</span>
-        <span class="skill">AI 应用</span>
-        <span class="skill">提示词工程</span>
-        <span class="skill">内容自动化</span>
-        <span class="skill">鸿蒙生态</span>
-        <span class="skill">越南语（学习中）</span>
-        <span class="skill">英语 CET-4</span>
-      </div>
-    </section>
-
-    <section id="projects">
-      <h2 class="section-title">正在做</h2>
-      <div class="projects">
-        <div class="card">
-          <h3>「WorkBuddy 使用技巧与热点」日更专栏</h3>
-          <p>标题以「WorkBuddy 之」开头，按基础 → 熟练 → 精深三级递进；配套爆款提示词 playbook，每日更新并原文摘录进内容 brief。</p>
-          <span class="status">持续更新中</span>
-        </div>
-        <div class="card">
-          <h3>公众号摘要自动化</h3>
-          <p>覆盖 SixSigmaHome、桃子讲质量、SHMQRC、zgzljlb 四个质量领域账号；配合 IMA 知识库，粘贴文章链接即可一步导入并生成摘要。</p>
-          <span class="status">自动化运行中</span>
-        </div>
-        <div class="card">
-          <h3>易经解读 · 64 卦系列</h3>
-          <p>已建立 3 套标题公式 + 7 模块结构 + 调性/配图/节奏规范 + 避坑清单，定位「人生成长与认知觉醒」。先出 2 篇样稿小批量验证，再推进其余 62 卦。</p>
-          <span class="status">样稿验证中</span>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="contact">
-      <h2 class="section-title" style="justify-content:center">联系我</h2>
-      <p>想聊质量管理、AI 内容自动化，或者只是打个招呼，欢迎邮件或 GitHub 找我。</p>
-      <div class="contact-links">
-        <a href="mailto:kingPine1988@gmail.com">kingPine1988@gmail.com</a>
-        <a href="https://github.com/kingpine1988-coder" target="_blank" rel="noopener">GitHub · kingpine1988-coder</a>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap">© 2026 保哥 · 用 GitHub Pages 搭建</div>
-  </footer>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0D1120" />
+    <meta name="twitter:title" content="词光 · 一词一画，点亮雅思" />
+    <meta name="twitter:image" content="https://0xlei.tech/words/brand/og-card.jpg" />
+    <title>词光 Word Atlas · 一词一画，点亮雅思</title>
+    <meta name="description" content="7,298 个雅思核心词，每个词一幅原创插画、两句原创例句和英美发音。学会一个，就点亮一颗星。免费、开源、无需注册。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="词光 · 一词一画，点亮雅思" />
+    <meta property="og:description" content="7,298 个雅思词，每个都有一幅画。学会一个，就点亮一颗星。免费、开源、无需注册。" />
+    <meta property="og:image" content="https://0xlei.tech/words/brand/og-card.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icon-512.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="preload" href="/atlas/index.json" as="fetch" crossorigin="anonymous" />
+    <script>
+      // Apply the saved theme (dark by default) before first paint.
+      (function () {
+        var t = "dark";
+        try {
+          var s = JSON.parse(localStorage.getItem("word-atlas:settings") || "{}");
+          if (s.theme) t = s.theme;
+        } catch (e) {}
+        if (t !== "system") document.documentElement.setAttribute("data-theme", t);
+      })();
+    </script>
+    <script type="module" crossorigin src="/assets/index-Dnyq5nlU.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BDZ0W126.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
 </html>
