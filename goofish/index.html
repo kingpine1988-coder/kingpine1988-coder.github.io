@@ -4,13 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0D1120">
-<title>闲鱼智能监控 · ai-goofish-monitor</title>
-<meta name="description" content="闲鱼智能监控 — AI 看图分析、关键词筛选、多渠道推送的闲鱼自动化监控工具。">
+<title>我的应用 · 词光 / TypeWords / 闲鱼智能监控</title>
+<meta name="description" content="保哥的 GitHub Pages 应用：词光 Word Atlas、打字词库 TypeWords、闲鱼智能监控。">
 <style>
   :root{
     --bg:#0D1120; --bg2:#11172b; --card:#161d33; --card-h:#1c2542;
     --line:#26304f; --txt:#e8ecf7; --muted:#9aa6c6; --dim:#6f7ca3;
     --yellow:#ffc233; --yellow2:#ffda6b; --cyan:#4fd6e8; --green:#45d6a0;
+    --blue:#7c9cff; --purple:#c08cff;
     --radius:16px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -23,17 +24,36 @@
   .glow{position:fixed;inset:0;z-index:-1;pointer-events:none;
     background:radial-gradient(900px 500px at 15% -5%,rgba(255,194,51,.10),transparent 60%),
                radial-gradient(800px 500px at 90% 5%,rgba(79,214,232,.08),transparent 60%);}
-  .wrap{max-width:920px;margin:0 auto;padding:0 20px}
-  header{padding:52px 0 24px;text-align:center}
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px}
+  header{padding:48px 0 20px;text-align:center}
   .badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;
     background:rgba(255,194,51,.10);border:1px solid rgba(255,194,51,.28);color:var(--yellow2);
     font-size:13px;font-weight:600;letter-spacing:.3px}
   .badge .dot{width:7px;height:7px;border-radius:50%;background:var(--yellow);box-shadow:0 0 10px var(--yellow)}
-  h1{font-size:clamp(30px,6vw,50px);line-height:1.2;margin:20px 0 12px;font-weight:800;letter-spacing:-.5px}
-  h1 .em{background:linear-gradient(100deg,var(--yellow),var(--yellow2));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .sub{color:var(--muted);font-size:clamp(15px,3vw,18px);max-width:620px;margin:0 auto}
-  .repo{display:inline-block;margin-top:16px;color:var(--dim);font-size:13px;text-decoration:none}
+  h1{font-size:clamp(28px,5.5vw,44px);line-height:1.2;margin:20px 0 10px;font-weight:800;letter-spacing:-.5px}
+  h1 .em{background:linear-gradient(100deg,var(--yellow),var(--purple));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{color:var(--muted);font-size:clamp(14px,3vw,17px);max-width:640px;margin:0 auto}
+  .repo{display:inline-block;margin-top:14px;color:var(--dim);font-size:13px;text-decoration:none}
   .repo:hover{color:var(--cyan)}
+
+  /* —— 应用卡片 —— */
+  .sec-title{font-size:14px;color:var(--dim);letter-spacing:2px;text-transform:uppercase;
+    margin:38px 0 16px;text-align:center}
+  .apps{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+  .app{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px;transition:.25s;position:relative;overflow:hidden}
+  .app::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent,var(--yellow))}
+  .app:hover{background:var(--card-h);transform:translateY(-4px);border-color:var(--accent,var(--yellow))}
+  .app .tag{display:inline-block;font-size:11px;letter-spacing:.6px;color:var(--accent,var(--yellow));
+    text-transform:uppercase;margin-bottom:8px;font-weight:700}
+  .app h3{font-size:17px;margin-bottom:8px;line-height:1.4}
+  .app p{color:var(--muted);font-size:13.5px;min-height:66px}
+  .app .foot{display:flex;align-items:center;justify-content:space-between;margin-top:16px;font-size:12.5px}
+  .status{color:var(--green)}
+  .status::before{content:"●";font-size:9px;margin-right:6px}
+  .app a.go{color:var(--accent,var(--yellow));text-decoration:none;font-weight:700}
+  .app a.go:hover{text-decoration:underline}
+  .cur{color:var(--dim)!important;pointer-events:none}
 
   /* —— 打开面板工具 —— */
   .panel{background:linear-gradient(160deg,var(--card),var(--bg2));border:1px solid var(--line);
@@ -52,9 +72,6 @@
   .hint code{background:#0b1020;border:1px solid var(--line);padding:1px 6px;border-radius:5px;color:var(--cyan);font-size:12px}
   .msg{margin-top:12px;font-size:13px;min-height:20px;color:var(--yellow2)}
 
-  /* —— 功能卡片 —— */
-  .sec-title{font-size:14px;color:var(--dim);letter-spacing:2px;text-transform:uppercase;
-    margin:44px 0 18px;text-align:center}
   .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
   .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
     padding:22px;transition:.25s}
@@ -63,7 +80,6 @@
   .card h3{font-size:16px;margin-bottom:6px}
   .card p{color:var(--muted);font-size:13.5px}
 
-  /* —— 步骤 —— */
   .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:6px}
   .step{background:var(--bg2);border:1px solid var(--line);border-radius:var(--radius);padding:20px;position:relative}
   .step .n{position:absolute;top:-12px;left:20px;width:26px;height:26px;border-radius:50%;
@@ -74,7 +90,7 @@
   .note{background:rgba(79,214,232,.06);border:1px solid rgba(79,214,232,.22);border-radius:var(--radius);
     padding:18px 20px;margin:34px 0;color:var(--muted);font-size:13.5px}
   .note b{color:var(--cyan)}
-  footer{text-align:center;color:var(--dim);font-size:12.5px;padding:40px 0 56px;border-top:1px solid var(--line);margin-top:20px}
+  footer{text-align:center;color:var(--dim);font-size:12.5px;padding:36px 0 52px;border-top:1px solid var(--line);margin-top:20px}
   .back{display:inline-block;margin-top:12px;color:var(--muted);text-decoration:none;font-size:13px}
   .back:hover{color:var(--yellow2)}
 </style>
@@ -84,12 +100,36 @@
 <div class="wrap">
 
   <header>
-    <span class="badge"><span class="dot"></span>GitHub Pages · 静态展示页</span>
-    <h1>闲鱼<span class="em">智能监控</span></h1>
-    <p class="sub">用 AI 看懂商品图片，按你的规则自动筛选闲鱼好物，并通过微信 / Telegram / Bark 等渠道第一时间推送提醒。</p>
-    <a class="repo" href="https://github.com/Usagi-org/ai-goofish-monitor" target="_blank" rel="noopener">开源项目：Usagi-org/ai-goofish-monitor ↗</a>
+    <span class="badge"><span class="dot"></span>My Apps · Showcase</span>
+    <h1>我的<span class="em">应用</span>展示</h1>
+    <p class="sub">词光、打字词库与闲鱼智能监控 —— 都用 GitHub Pages 搭建，点开即用。</p>
+    <a class="repo" href="https://github.com/kingpine1988-coder" target="_blank" rel="noopener">GitHub · kingpine1988-coder ↗</a>
   </header>
 
+  <div class="sec-title">全部应用</div>
+  <section class="apps">
+    <div class="app" style="--accent:var(--yellow)">
+      <span class="tag">Goofish</span>
+      <h3>闲鱼智能监控</h3>
+      <p>AI 看图分析商品，按规则自动筛选闲鱼好物，并通过微信 / Telegram 等渠道推送提醒。</p>
+      <div class="foot"><span class="cur">当前页面</span><a class="go" href="#monitor">查看 ↓</a></div>
+    </div>
+    <div class="app" style="--accent:var(--blue)">
+      <span class="tag">Words</span>
+      <h3>词光 · Word Atlas</h3>
+      <p>一词一画，点亮雅思。7298 个核心词，每个词一幅原创插画、两句原创例句和英美发音。免费、开源、无需注册。</p>
+      <div class="foot"><span class="status">在线可用</span><a class="go" href="/words/">进入站点 →</a></div>
+    </div>
+    <div class="app" style="--accent:var(--cyan)">
+      <span class="tag">Typing</span>
+      <h3>打字词库 · TypeWords</h3>
+      <p>英语打字练习工具：按教材与词书分册练习，支持听写、词典查询、学习统计与自定义导入。</p>
+      <div class="foot"><span class="status">在线可用</span><a class="go" href="/typewords/">进入站点 →</a></div>
+    </div>
+  </section>
+
+  <div id="monitor"></div>
+  <div class="sec-title">闲鱼智能监控 · 打开面板</div>
   <section class="panel">
     <h2><span class="live"></span>打开可交互的监控面板</h2>
     <p class="tip">本页是静态展示页，按钮点不动。真正的监控面板跑在你自己电脑上，通过 Cloudflare 隧道暴露成公网地址。</p>
@@ -109,7 +149,7 @@
   <section class="grid">
     <div class="card"><div class="ic">👀</div><h3>AI 看图分析</h3><p>把商品截图交给视觉大模型，自动判断成色、型号、瑕疵，不再只靠关键词碰运气。</p></div>
     <div class="card"><div class="ic">🎯</div><h3>大白话建任务</h3><p>用自然语言描述你要找什么、预算多少、排除什么，零基础也能配置监控规则。</p></div>
-    <div class="card"><div class="ic">📢</div><h3>多渠道推送</h3><p>命中好物后通过微信、Telegram、Bark、 ntfy、Webhook 等渠道即时通知你。</p></div>
+    <div class="card"><div class="ic">📢</div><h3>多渠道推送</h3><p>命中好物后通过微信、Telegram、Bark、ntfy、Webhook 等渠道即时通知你。</p></div>
     <div class="card"><div class="ic">🔐</div><h3>本地登录态</h3><p>监控跑在你自己的电脑和浏览器环境，保留闲鱼登录 Cookie，风控更低。</p></div>
   </section>
 
@@ -121,13 +161,13 @@
   </section>
 
   <div class="note">
-    <b>说明：</b>这个页面部署在 GitHub Pages，只能提供静态内容；它需要 Python 后端 + 浏览器爬虫 + 定时任务，无法在 Pages 上运行。
+    <b>说明：</b>这些页面部署在 GitHub Pages，只能提供静态内容；闲鱼监控需要 Python 后端 + 浏览器爬虫 + 定时任务，无法在 Pages 上运行。
     程序本体运行在你自己的电脑上，本页只是它的门面。想让公网地址固定不变，可进一步配置 Cloudflare Named Tunnel（需自有域名）。
   </div>
 
   <footer>
-    闲鱼智能监控 · 静态展示页 · 由 WorkBuddy 部署
-    <br><a class="back" href="/">← 返回词光 Word Atlas 首页</a>
+    保哥 · 质量管理 × AI 内容实践 · 应用展示页
+    <br><a class="back" href="/">← 返回个人主页</a>
   </footer>
 
 </div>
