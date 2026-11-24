@@ -1,0 +1,18 @@
+{
+  "name": "人人都能用英语 · 离线合订版",
+  "short_name": "人人英语",
+  "description": "李笑来《人人都能用英语》全书在线/离线阅读版",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0d1117",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
