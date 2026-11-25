@@ -1,0 +1,6 @@
+# 越南语学习 App：内联 base64/JS，必须字节级保真，禁止换行符转换
+vietnamese-learning.html -text
+*.mp3 binary
+*.pdf binary
+*.epub binary
+*.png binary
