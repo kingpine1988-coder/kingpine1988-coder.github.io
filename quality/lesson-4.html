@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDCA循环：让每一次忙碌都有回响</title>
+<meta name="description" content="保哥品质课堂 · 中越双语质量管理连载：PDCA循环：让每一次忙碌都有回响。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230f1117'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-size='36' font-family='sans-serif' fill='%236c8cff'%3E%E4%BF%9D%3C/text%3E%3C/svg%3E">
+<style>
+:root{--bg:#0d0f16;--bg2:#12151f;--card:#171b27;--text:#eef0f6;--muted:#9ba2b8;--accent:#7c9cff;--accent2:#c08cff;--border:#292e3e}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.85;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(760px 420px at 12% -8%,rgba(124,156,255,.16),transparent 70%),radial-gradient(680px 400px at 92% 4%,rgba(192,140,255,.12),transparent 72%),linear-gradient(180deg,var(--bg2),var(--bg) 55%)}
+a{color:inherit}
+.wrap{width:min(820px,calc(100% - 40px));margin:0 auto}
+header{position:sticky;top:0;z-index:20;background:rgba(13,15,22,.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+nav{display:flex;justify-content:space-between;align-items:center;height:60px;gap:12px}
+.logo{font-weight:800;font-size:17px;text-decoration:none}
+.logo span{color:var(--accent)}
+.back{color:var(--muted);text-decoration:none;font-size:13px}
+.back:hover{color:var(--text)}
+.hero{padding:54px 0 30px;text-align:center}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border:1px solid var(--border);border-radius:999px;font-size:12px;color:var(--muted);background:rgba(255,255,255,.02);margin-bottom:20px}
+.badge::before{content:"";width:7px;height:7px;border-radius:50%;background:#5fd39a;box-shadow:0 0 0 4px rgba(95,211,154,.12)}
+h1{font-size:clamp(25px,5vw,36px);line-height:1.35;letter-spacing:-.3px}
+.sub{color:var(--muted);font-size:14px;margin-top:14px}
+.tabs{display:flex;justify-content:center;gap:8px;margin:28px 0 6px;flex-wrap:wrap}
+.tab{padding:8px 18px;border:1px solid var(--border);border-radius:999px;background:var(--card);color:var(--muted);font-size:13px;cursor:pointer;transition:.2s}
+.tab:hover{border-color:var(--accent);color:var(--text)}
+.tab.active{background:linear-gradient(120deg,var(--accent),var(--accent2));color:#fff;border-color:transparent;font-weight:600}
+article{padding:22px 0 60px}
+.section-label{font-size:12px;letter-spacing:1px;color:var(--accent);text-transform:uppercase;margin:36px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+h2{font-size:20px;margin:34px 0 14px;line-height:1.5;color:var(--text)}
+p{color:#d7dbe8;font-size:15.5px;margin:14px 0}
+strong{color:#fff;font-weight:700}
+ul,ol{margin:14px 0 14px 4px;padding-left:22px;color:#d7dbe8;font-size:15.5px}
+li{margin:8px 0}
+figure{margin:26px 0;text-align:center}
+figure img{max-width:100%;border-radius:14px;border:1px solid var(--border);box-shadow:0 18px 50px -30px rgba(0,0,0,.8)}
+.callout{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:10px;padding:16px 20px;margin:22px 0;font-size:15px;color:#d7dbe8}
+.callout b{color:var(--accent)}
+.callout.question{border-left-color:var(--accent2)}
+.callout.question b{color:var(--accent2)}
+.foot{margin-top:46px;padding-top:22px;border-top:1px solid var(--border);text-align:center;color:var(--muted);font-size:13px}
+.foot a{color:var(--accent);text-decoration:none}
+.lang-cn .vi-only,.lang-vi .cn-only{display:none}
+.lang-both .cn-only,.lang-both .vi-only{display:block}
+.list{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin:32px 0 20px}
+.item{display:block;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 22px;text-decoration:none;transition:.2s}
+.item:hover{border-color:rgba(124,156,255,.6);transform:translateY(-3px)}
+.item .no{font-size:12px;color:var(--accent);letter-spacing:.5px}
+.item .ttl{font-size:16px;margin:8px 0 6px;color:var(--text);line-height:1.5}
+.item .meta{font-size:12px;color:var(--muted)}
+@media(max-width:600px){.hero{padding:40px 0 20px}h2{font-size:18px}p,ul,ol{font-size:15px}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><nav>
+<a class="logo" href="../index.html">保<span>哥</span> · 品质课堂</a>
+<a class="back" href="index.html">← 全部课程</a>
+</nav></div></header>
+<main class="wrap">
+<div class="hero">
+<div class="badge">QUALITY CLASS · 中越双语</div>
+<h1>PDCA循环：让每一次忙碌都有回响</h1>
+<p class="sub">质量管理连载 · 从 0 到黑带 · 第四课</p>
+<div class="tabs">
+<button class="tab" data-lang="cn">中文</button>
+<button class="tab" data-lang="vi">Tiếng Việt</button>
+<button class="tab" data-lang="both">双语 / Song ngữ</button>
+</div>
+</div>
+<article>
+<div class="cn-only">
+<div class="section-label">中文版 · BẢN TIẾNG TRUNG</div>
+<p>&gt; 为什么你每天忙到深夜，回头一看却像什么都没做？PDCA 可能是那个让你从&quot;瞎忙&quot;走向&quot;精进&quot;的最小闭环。</p>
+<h2>一、你听过 PDCA，但真的用过吗？</h2>
+<p>PDCA 循环，又称戴明环（Deming Cycle），是美国质量管理专家休哈特首先提出、后由戴明推广普及的科学工作方法。它的四个阶段——计划（Plan）、执行（Do）、检查（Check）、修正（Act）——周而复始，一个循环结束解决一些问题，未解决的问题进入下一个循环，阶梯式上升。</p>
+<div class="callout note"><b>关键洞察：</b>PDCA 不是一个&quot;一次性工具&quot;，而是一个&quot;永不停止的螺旋&quot;。它的威力不在于某个环节做得多完美，而在于&quot;循环&quot;本身——每一次循环都在上一次的基础上，把水平往上推一格。</div>
+<h2>二、P（Plan）计划：先搞清楚&quot;往哪走&quot;</h2>
+<p>计划是 PDCA 的起点，也是<strong>最重要</strong>的一步。很多人跳过这一步，一上来就&quot;干&quot;，结果干了半天发现方向错了。</p>
+<p>计划的四件套：</p>
+<div class="callout note"><b>① 认清目的：</b>你想解决什么问题？最终达到什么状态？所有参与者对这个目标有一致的理解吗？</div>
+<div class="callout note"><b>② 掌握相关信息：</b>背景是什么？资源有哪些？时间限制多紧？</div>
+<div class="callout note"><b>③ 现状分析：</b>当前的真实状况是什么？用数据说话，别凭感觉。</div>
+<div class="callout question"><b>④ 5W2H 思考法：</b>Why（为什么做）、What（做什么）、Where（在哪做）、When（何时做）、Who（谁来做）、How（怎么做）、How Much（成本多少）。</div>
+<div class="callout note"><b>常见误区：</b>只写计划清单，不思考&quot;为什么&quot;。没有 Why 的计划是空的，员工执行时会机械照搬，遇到变化就无所适从。</div>
+<h2>三、D（Do）执行：把计划落地</h2>
+<p>执行阶段不是简单的&quot;照着干&quot;，而是：</p>
+<div class="callout note"><b>① 对相关人员进行教育：</b>确保每个人都理解并认同计划的目标和方法。不是&quot;通知&quot;他们，而是让他们&quot;懂得&quot;。</div>
+<div class="callout note"><b>② 按组织分工管理活动：</b>把管理活动分担给各部门和人员，让每个人清楚自己的职责。</div>
+<div class="callout note"><b>③ 按计划布局方案：</b>确保计划得以有效实施，而不是&quot;说归说、做归做&quot;。</div>
+<div class="callout note"><b>关键提醒：</b>执行阶段的失败，往往不是因为能力不够，而是因为&quot;没对齐&quot;——有人以为目标是 A，实际干的是 B。</div>
+<h2>四、C（Check）检查：看看走对了没有</h2>
+<p>检查阶段是最容易被跳过、也<strong>最该重视</strong>的阶段。很多人做完就完事了，从不回头看。</p>
+<p>检查的四要素（4C 管理）：</p>
+<ul><li><strong>Check（检查）</strong>：对照计划，实际执行得怎么样？</li><li><strong>Communicate（沟通）</strong>：发现问题及时和团队沟通，别藏着掖着。</li><li><strong>Clean（清理）</strong>：把多余的、无效的工作清掉，回归本质。</li><li><strong>Control（控制）</strong>：对偏差及时纠偏，防止问题扩大。</li></ul>
+<div class="callout note"><b>一句话：</b>检查不是为了&quot;找茬&quot;，而是为了&quot;确认&quot;——确认方向对了，确认问题早发现。</div>
+<h2>五、A（Act）修正：把经验变成资产</h2>
+<p>修正阶段是持续改进的<strong>真正核心</strong>。很多人做完检查就止步了，没有把经验固化下来。</p>
+<p>修正的三步走：</p>
+<div class="callout note"><b>① 成功经验标准化：</b>把这次成功的做法写成 SOP、流程、标准，让下次可以直接复用，不再&quot;从零开始&quot;。</div>
+<div class="callout note"><b>② 失败教训要重视：</b>哪里踩了坑？为什么？把教训记下来，避免下次再犯。</div>
+<div class="callout note"><b>③ 未解决的问题进入下一个循环：</b>这轮没解决的，带进下一轮 PDCA，继续攻克。</div>
+<div class="callout note"><b>精髓：</b>A（Act）不是&quot;到此为止&quot;，而是&quot;总结过去、开启下一轮&quot;。这就是为什么 PDCA 是&quot;循环&quot;而不是&quot;流程&quot;。</div>
+<h2>六、PDCA 的三大特点</h2>
+<div class="callout note"><b>① 大环套小环：</b>整个公司有大的 PDCA，部门有小环，个人也有自己的小环。小环围绕大环转，环环相扣。</div>
+<div class="callout note"><b>② 阶梯式上升：</b>每一次循环都在上一轮的基础上解决问题、提升水平。不循环，就原地踏步。</div>
+<div class="callout note"><b>③ 门路式上升：</b>不是在一个水平面上转圈，而是像上楼梯一样，每走一步都更高一层。</div>
+<h2>七、一句话总结</h2>
+<p>PDCA 不是复杂的理论，它只是一个朴素的逻辑：<strong>先想清楚（Plan），再动手做（Do），做完回头看（Check），回头再改进（Act）</strong>。用好了，你的每一天都在螺旋上升；用不好，就只是在原地空转。</p>
+<p>&gt; 记住：PDCA 的最大敌人不是&quot;不会用&quot;，而是&quot;用完不循环&quot;。</p>
+<h2>思考题</h2>
+<p>你最近一次&quot;完整走完 PDCA 四步&quot;的工作是什么时候？是在哪个阶段最容易断掉？是计划太粗、执行太急、检查太短、还是修正太少？</p>
+<h2>参考资料</h2>
+<ul><li>《质量意识不是喊出来的是长出来的》—— 质量视界公众号</li><li>朱兰（J.M. Juran）《朱兰质量手册》</li><li>克劳士比（Philip Crosby）《质量无泪》</li></ul>
+<p>---</p>
+</div>
+<div class="vi-only">
+<div class="section-label">越南语版 · BẢN TIẾNG VIỆT</div>
+<p>---</p>
+<p># Bài 4 · Chu trình PDCA: Biến mỗi ngày tất bật đều có hồi âm · Tiếng Việt</p>
+<p>&gt; Vì sao bạn tất bật đến khuya mỗi ngày, nhìn lại thì thấy như chẳng làm được gì? PDCA có thể là vòng lặp nhỏ nhất giúp bạn chuyển từ &quot;tất bật mù quáng&quot; sang &quot;tiến bộ thực sự&quot;.</p>
+<h2>1. Bạn nghe qua PDCA, nhưng thật sự đã dùng chưa?</h2>
+<p>Chu trình PDCA, còn gọi là Vòng lặp Deming, do chuyên gia quản lý chất lượng người Mỹ Shewhart lần đầu đề xuất, sau đó Deming phổ biến và quảng bá rộng rãi — một phương pháp làm việc khoa học. Bốn giai đoạn của nó — Kế hoạch (Plan), Thực hiện (Do), Kiểm tra (Check), Điều chỉnh (Act) — lặp đi lặp lại, mỗi vòng giải quyết được một số vấn đề, những vấn đề chưa giải quyết được sẽ nhập vào vòng tiếp theo, nâng cấp theo bậc thang.</p>
+<div class="callout note"><b>Nhận định then chốt：</b> PDCA không phải là &quot;công cụ dùng một lần&quot;, mà là một &quot;xoáy ốc không bao giờ dừng&quot;. Sức mạnh của nó không nằm ở việc某个环节 làm hoàn hảo đến đâu, mà nằm ở bản thân việc &quot;tuần hoàn&quot; — mỗi vòng lặp đều đẩy mức độ lên một bậc so với vòng trước.</div>
+<h2>2. P (Plan) Kế hoạch: Trước tiên phải rõ &quot;đi về đâu&quot;</h2>
+<p>Kế hoạch là điểm xuất phát của PDCA, cũng là bước <strong>quan trọng nhất</strong>. Rất nhiều người bỏ qua bước này, lao vào &quot;làm&quot; ngay, kết quả làm cả ngày lại phát hiện hướng sai.</p>
+<p>Bộ bốn món của kế hoạch:</p>
+<div class="callout note"><b>① Xác nhận mục đích：</b> Bạn muốn giải quyết vấn đề gì? Trạng thái cuối cùng đạt được là gì? Tất cả người tham gia có hiểu nhất quán về mục tiêu không?</div>
+<div class="callout note"><b>② Nắm rõ thông tin liên quan：</b> Bối cảnh là gì? Nguồn lực có những gì? Giới hạn thời gian ra sao?</div>
+<div class="callout note"><b>③ Phân tích hiện trạng：</b> Tình trạng thực tế hiện nay là gì? Dùng dữ liệu nói chuyện, đừng dựa cảm giác.</div>
+<div class="callout note"><b>④ Phương pháp suy nghĩ 5W2H：</b> Why (tại sao làm), What (làm gì), Where (làm ở đâu), When (khi nào làm), Who (ai làm), How (làm như thế nào), How Much (chi phí bao nhiêu).</div>
+<div class="callout note"><b>Sai lầm thường gặp：</b> Chỉ viết danh sách kế hoạch, không suy nghĩ &quot;tại sao&quot;. Kế hoạch không có Why là rỗng tuếch, nhân viên thực hiện sẽ làm máy móc, gặp biến động là lúng túng.</div>
+<h2>3. D (Do) Thực hiện: Đưa kế hoạch vào thực tế</h2>
+<p>Giai đoạn thực hiện không phải đơn giản là &quot;làm theo&quot;, mà cần:</p>
+<div class="callout note"><b>① Giáo dục nhân viên liên quan：</b> Đảm bảo mỗi người đều hiểu và đồng thuận với mục tiêu và phương pháp của kế hoạch. Không phải &quot;thông báo&quot; họ, mà để họ &quot;thấu hiểu&quot;.</div>
+<div class="callout note"><b>② Phân công quản lý hoạt động theo tổ chức：</b> Chia hoạt động quản lý cho các bộ phận và nhân viên, để mỗi người rõ trách nhiệm của mình.</div>
+<div class="callout note"><b>③ Bố trí phương án theo kế hoạch：</b> Đảm bảo kế hoạch được thực hiện hiệu quả, đừng để &quot;nói một đàng, làm một nẻo&quot;.</div>
+<div class="callout note"><b>Nhắc nhở then chốt：</b> Thất bại ở giai đoạn thực hiện, thường không phải vì năng lực不够, mà vì &quot;không đồng bộ&quot; — người thì tưởng mục tiêu là A, thực tế làm B.</div>
+<h2>4. C (Check) Kiểm tra: Xem đã đi đúng chưa</h2>
+<p>Giai đoạn kiểm tra là bước dễ bị bỏ qua nhất, cũng là bước <strong>nên coi trọng nhất</strong>. Rất nhiều người làm xong là xong, không bao giờ ngoảnh đầu nhìn lại.</p>
+<p>Bốn yếu tố kiểm tra (quản lý 4C):</p>
+<ul><li><strong>Check (Kiểm tra)</strong>: So với kế hoạch, thực tế thực hiện được bao nhiêu?</li><li><strong>Communicate (Giao tiếp)</strong>: Phát hiện vấn đề giao tiếp kịp thời với đội ngũ, đừng giấu.</li><li><strong>Clean (Dọn dẹp)</strong>: Loại bỏ công việc thừa thãi, vô hiệu, quay về bản chất.</li><li><strong>Control (Kiểm soát)</strong>: Sửa lệch ngay để vấn đề không lan rộng.</li></ul>
+<div class="callout note"><b>Một câu：</b> Kiểm tra không phải để &quot;trù dập&quot;, mà để &quot;xác nhận&quot; — xác nhận hướng đúng, xác nhận vấn đề phát hiện sớm.</div>
+<h2>5. A (Act) Điều chỉnh: Biến kinh nghiệm thành tài sản</h2>
+<p>Giai đoạn điều chỉnh là <strong>trung tâm thực sự</strong> của cải tiến liên tục. Rất nhiều người làm xong kiểm tra là dừng, không biến kinh nghiệm thành chuẩn.</p>
+<p>Ba bước điều chỉnh:</p>
+<div class="callout note"><b>① Tiêu chuẩn hóa kinh nghiệm thành công：</b> Viết SOP, quy trình, tiêu chuẩn từ cách làm thành công lần này, để lần sau có thể tái sử dụng ngay, không phải &quot;từ con số không&quot;.</div>
+<div class="callout note"><b>② Phải coi trọng bài học thất bại：</b> Dẫm phải坑 ở đâu? Vì sao? Ghi lại, tránh lần sau tái phạm.</div>
+<div class="callout note"><b>③ Vấn đề chưa giải quyết nhập vào vòng sau：</b> Vòng này chưa giải quyết được, mang vào vòng PDCA tiếp theo, tiếp tục tấn công.</div>
+<div class="callout note"><b>Tinh hoa：</b> A (Act) không phải là &quot;đến đây thôi&quot;, mà là &quot;tổng kết quá khứ, mở đầu vòng mới&quot;. Đó là lý do PDCA là &quot;tuần hoàn&quot; chứ không phải &quot;quy trình&quot;.</div>
+<h2>6. Ba đặc điểm của PDCA</h2>
+<div class="callout note"><b>① Vòng lớn lồng vòng nhỏ：</b> Cả công ty có vòng PDCA lớn, phòng ban có vòng nhỏ, cá nhân cũng có vòng riêng. Vòng nhỏ quay quanh mục tiêu vòng lớn, gắn kết hữu cơ.</div>
+<div class="callout note"><b>② Nâng cấp bậc thang：</b> Mỗi vòng lặp đều giải quyết vấn đề, nâng mức độ so với vòng trước. Không tuần hoàn, thì原地踏步.</div>
+<div class="callout note"><b>③ Nâng cấp kiểu bậc thang：</b> Không phải quay vòng trên một mặt phẳng, mà như lên cầu thang, mỗi bước đều cao hơn một bậc.</div>
+<h2>7. Một câu tóm tắt</h2>
+<p>PDCA không phải lý thuyết phức tạp, nó chỉ là logic thô giản: <strong>trước tiên nghĩ rõ (Plan), sau đó mới làm (Do), làm xong ngoảnh đầu nhìn lại (Check), nhìn lại rồi cải tiến (Act)</strong>. Dùng tốt, mỗi ngày của bạn đều xoáy ốc đi lên; dùng không tốt, chỉ là xoay原地 không tiến.</p>
+<p>&gt; Nhớ kỹ: Kẻ thù lớn nhất của PDCA không phải &quot;không biết dùng&quot;, mà là &quot;dùng xong không tuần hoàn&quot;.</p>
+<h2>Câu hỏi suy ngẫm</h2>
+<p>Lần gần nhất bạn &quot;đi trọn PDCA bốn bước&quot; là khi nào? Khó đứt nhất ở giai đoạn nào? Là kế hoạch quá sơ, thực hiện quá gấp, kiểm tra quá ngắn, hay điều chỉnh quá ít?</p>
+<h2>Tài liệu tham khảo</h2>
+<ul><li>Bài viết 《Nâng cao ý thức chất lượng nhân viên》之 tạp chí Chất lượng (质量视界)</li><li>J.M. Juran 《Handbook of Quality Control》(Sổ tay quản lý chất lượng Juran)</li><li>Philip Crosby 《Quality Is Free》(Chất lượng là miễn phí)</li></ul>
+</div>
+<div class="foot"><a href="index.html">← 返回课程列表</a> · © 2026 保哥 · 质量管理 × AI 内容实践</div>
+</article>
+</main>
+<script>
+const tabs=[...document.querySelectorAll('.tab')];
+function setLang(l){document.body.className='lang-'+l;tabs.forEach(t=>t.classList.toggle('active',t.dataset.lang===l));try{localStorage.setItem('qa_lang',l)}catch(e){}}
+tabs.forEach(t=>t.addEventListener('click',()=>setLang(t.dataset.lang)));
+setLang((()=>{try{return localStorage.getItem('qa_lang')||'both'}catch(e){return 'both'}})());
+</script>
+</body>
+</html>
